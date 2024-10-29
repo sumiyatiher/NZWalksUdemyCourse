@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NZWalkz.API.Data;
 
@@ -11,9 +12,11 @@ using NZWalkz.API.Data;
 namespace NZWalkz.API.Migrations
 {
     [DbContext(typeof(NZWalkzDBContext))]
-    partial class NZWalkzDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241029024940_Add Images Table")]
+    partial class AddImagesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

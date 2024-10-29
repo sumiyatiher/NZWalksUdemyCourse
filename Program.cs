@@ -9,12 +9,15 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using NZWalkz.API.Repo.TokenJWTRepo;
 using Microsoft.OpenApi.Models;
+using NZWalkz.API.Repo.ImagesRepo;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -59,6 +62,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksAuthConne
 builder.Services.AddScoped<IRegionRepo,SQLRegionRepo>();
 builder.Services.AddScoped<IWalksRepo,SQLWalkRepo>();
 builder.Services.AddScoped<IToken, TokenRepo>();
+builder.Services.AddScoped<IImagesRepo,LocalImageRepos>();
 
 builder.Services.AddAutoMapper(typeof(ProfilesMapper));
 
@@ -103,6 +107,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Images")),
+    RequestPath = "/Images"
+});
 
 app.MapControllers();
 
