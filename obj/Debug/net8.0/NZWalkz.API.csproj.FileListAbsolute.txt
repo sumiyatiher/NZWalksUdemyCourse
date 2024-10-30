@@ -150,3 +150,12 @@ E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.R
 E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\NZWalkz\NZWalkz\NZWalkz.API\obj\Debug\net8.0\NZWalkz.API.sourcelink.json
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+E:\NZWalkz\NZWalkz\NZWalkz.API\bin\Debug\net8.0\Serilog.Sinks.File.dll

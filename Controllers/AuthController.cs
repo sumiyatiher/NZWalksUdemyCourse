@@ -24,6 +24,7 @@ namespace NZWalkz.API.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto regist)
         {
+
             var identityUser = new IdentityUser
             {
                 UserName = regist.Username,
@@ -46,7 +47,7 @@ namespace NZWalkz.API.Controllers
                 }
             }
 
-            return BadRequest("Something went wrong!");
+            throw new Exception("User sudah ada!");
         }
 
         [HttpPost]

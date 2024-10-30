@@ -5,6 +5,7 @@ using NZWalkz.API.CustomActionFilters;
 using NZWalkz.API.Models.DomainModels;
 using NZWalkz.API.Models.DTOs.Walks;
 using NZWalkz.API.Repo.WalkRepo;
+using System.Net;
 
 namespace NZWalkz.API.Controllers
 {
@@ -41,9 +42,11 @@ namespace NZWalkz.API.Controllers
             , [FromQuery] string? sortBy, [FromQuery] bool? isAsc,
             [FromQuery] int pNumber = 1, [FromQuery] int pSize = 1000)
         {
-            var listWalkDomainObject = await walkRepo.GetAllAsyc(filterOn,filterQuery,sortBy,isAsc ?? true,pNumber,pSize);
+           
+                var listWalkDomainObject = await walkRepo.GetAllAsyc(filterOn, filterQuery, sortBy, isAsc ?? true, pNumber, pSize);
 
-            return Ok(mapper.Map<List<WalkDTO>>(listWalkDomainObject));
+                return Ok(mapper.Map<List<WalkDTO>>(listWalkDomainObject));
+           
         }
 
         [HttpGet]

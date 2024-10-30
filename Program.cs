@@ -11,10 +11,22 @@ using NZWalkz.API.Repo.TokenJWTRepo;
 using Microsoft.OpenApi.Models;
 using NZWalkz.API.Repo.ImagesRepo;
 using Microsoft.Extensions.FileProviders;
+using Serilog;
+using NZWalkz.API.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
+
+
+//Serilog,Logger
+var Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("AppLogs/NZWalksLogs.txt",rollingInterval: RollingInterval.Day)
+    .MinimumLevel.Warning()
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(Logger);
+//End Logger
 
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
@@ -102,6 +114,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseHttpsRedirection();
 

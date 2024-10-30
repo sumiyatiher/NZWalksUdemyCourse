@@ -8,6 +8,7 @@ using NZWalkz.API.Data;
 using NZWalkz.API.Models.DomainModels;
 using NZWalkz.API.Models.DTOs.Region;
 using NZWalkz.API.Repo.RegionRepo;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace NZWalkz.API.Controllers
@@ -21,20 +22,25 @@ namespace NZWalkz.API.Controllers
         private readonly NZWalkzDBContext dbContext;
         private readonly IRegionRepo regionRepo;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> log;
 
-        public RegionsController(NZWalkzDBContext dbContext,IRegionRepo regionRepo,IMapper mapper)
+        public RegionsController(NZWalkzDBContext dbContext,IRegionRepo regionRepo,IMapper mapper, ILogger<RegionsController> log)
         {
             this.dbContext = dbContext;
             this.regionRepo = regionRepo;
             this.mapper = mapper;
+            this.log = log;
         }
 
         //Async Method
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        //[Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllRegAsyc()
         {
+            log.LogInformation("GetAllRegAsync was invoked");
             var RegionList = await regionRepo.GetAllRegionAsyc();
+
+            log.LogInformation($"Finished GetAllRegAsync with data {JsonSerializer.Serialize(RegionList)}");
 
             return Ok(mapper.Map<List<RegionDTO>>(RegionList));
 
